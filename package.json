@@ -1,0 +1,9 @@
+{
+    "name": "phone-auth",
+    "scripts": {
+        "format": "prettier --write ."
+    },
+    "devDependencies": {
+        "prettier": "^3.1.0"
+    }
+}
