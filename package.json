@@ -1,9 +1,13 @@
 {
-    "name": "phone-auth",
-    "scripts": {
-        "format": "prettier --write ."
-    },
-    "devDependencies": {
-        "prettier": "^3.1.0"
-    }
+  "name": "phone-auth",
+  "scripts": {
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  },
+  "dependencies": {
+    "firebase": "^10.6.0",
+    "firebaseui": "^6.1.0"
+  }
 }

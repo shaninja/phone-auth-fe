@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import './App.css'
+import PhoneAuth from '../components/PhoneAuth'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-
+      <PhoneAuth />
     </>
   )
 }
