@@ -1,9 +1,18 @@
 {
   "name": "phone-auth",
   "scripts": {
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "frontend-dev": "cd frontend && npm run dev",
+    "frontend-build": "cd frontend && npm run build",
+    "server-dev": "cd backend && npm run dev",
+    "server-start": "cd backend && npm run start",
+    "server-build": "cd backend && npm run build",
+    "build": "concurrently --kill-others \"npm run frontend-build\" \"npm run server-build\"",
+    "dev": "concurrently --kill-others \"npm run frontend-dev\" \"npm run server-dev\"",
+    "start": "concurrently --kill-others \"npm run frontend-dev\" \"npm run server-start\""
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "prettier": "^3.1.0"
   },
   "dependencies": {
