@@ -1,11 +1,29 @@
 import { Request, Response, Router } from 'express';
 import admin from 'firebase-admin';
+const serviceAccount = require('../service-account-key.json');
+console.log("🚀 ~ file: users.ts:4 ~ serviceAccount:", serviceAccount)
 
 const router: Router = Router();
 
-admin.initializeApp({
-  credential: admin.credential.applicationDefault()
-});
+// TODO extract this to a place that can be used for the FE and BE alike
+const firebaseConfig = {
+  apiKey: 'AIzaSyBOYVQZkD49hYqnLEYZxGJM7QI1V0-s4rk',
+  authDomain: 'phone-auth-12.firebaseapp.com',
+  projectId: 'phone-auth-12',
+  storageBucket: 'phone-auth-12.appspot.com',
+  messagingSenderId: '501699185310',
+  appId: '1:501699185310:web:0b85add1f990d32217898f',
+  measurementId: 'G-QJWHNVEF4B',
+  credential: admin.credential.cert(serviceAccount)
+  // TODO think about how to store the credentials. env var?
+  // credential: admin.credential.cert({
+  //   "project_id": process.env.FIREBASE_PROJECT_ID,
+  //   "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+  //   "client_email": process.env.FIREBASE_CLIENT_EMAIL,
+  // }),
+}
+
+admin.initializeApp(firebaseConfig);
 
 const db = admin.firestore();
 
@@ -13,10 +31,15 @@ router.post('/updateUserDetails', async (req: Request, res: Response) => {
   console.log('IN updateUserDetails');
   try {
     // TODO add server side validation for the fields, preferably use a validation library (for example Joi)
-    const phone = req.body.phone;
-    console.log("🚀 ~~ phone:", phone)
-    console.log("🚀 ~ ~ req.body:", req.body)
-    // TODO send to firestore
+    const {name, email, phone} = req.body
+    const userRef = db.collection('users').doc(phone);
+    const doc = await userRef.get();
+    
+    if (!doc.exists) {
+      await db.collection('users').doc(phone).set({name, email});
+    } else {
+      await db.collection('users').doc(phone).update({name, email});
+    }
     
     res.status(200).json({message: "Document updated successfully"});
   } catch (error) {
