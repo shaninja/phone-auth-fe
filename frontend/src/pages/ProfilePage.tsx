@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import firebase from 'firebase/compat/app'
 import 'firebase/auth'
+import LogoutButton from '../components/LogoutButton'
 
 interface UserDetails {
   name: string
@@ -88,6 +89,7 @@ const ProfilePage: React.FC = () => {
 
   return (
     <div>
+      <LogoutButton />
       <form onSubmit={handleSubmit}>
         <input
           type="text"
