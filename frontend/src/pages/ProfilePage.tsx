@@ -94,6 +94,7 @@ const ProfilePage: React.FC = () => {
 
   return (
     <>
+    {/* TODO add a loader until we get the firebase user */}
       <LogoutButton />
       <UserDetailsForm
         userDetails={userDetails}

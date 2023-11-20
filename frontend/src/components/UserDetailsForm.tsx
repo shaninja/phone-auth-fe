@@ -15,6 +15,7 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
   handleChange,
   handleSubmit,
 }) => {
+  // TODO style the form
   return (
     <form onSubmit={handleSubmit}>
       <input
