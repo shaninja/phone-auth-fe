@@ -4,6 +4,8 @@ import 'firebase/auth'
 import LogoutButton from '../components/LogoutButton'
 import UserDetailsForm from '../components/UserDetailsForm'
 
+const SERVER_BASE_URL = import.meta.env.VITE_APP_SERVER_BASE_URL;
+
 interface UserDetails {
   name: string
   email: string
@@ -35,9 +37,8 @@ const ProfilePage: React.FC = () => {
         if (firebaseUser) {
           phone = firebaseUser.phoneNumber
 
-          // TODO use env var for URL base
           const response = await fetch(
-            `http://localhost:3000/users/getUserDetails/${phone}`,
+            `${SERVER_BASE_URL}/users/getUserDetails/${phone}`,
           )
           const data = await response.json()
           if (response.ok || response.status === 404) {
@@ -71,9 +72,8 @@ const ProfilePage: React.FC = () => {
     event.preventDefault()
 
     try {
-      // TODO use env var for URL base
       const response = await fetch(
-        'http://localhost:3000/users/updateUserDetails',
+        `${SERVER_BASE_URL}/users/updateUserDetails`,
         {
           method: 'POST',
           headers: {
