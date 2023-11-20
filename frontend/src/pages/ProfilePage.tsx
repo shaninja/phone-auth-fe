@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import firebase from 'firebase/compat/app'
 import 'firebase/auth'
 import LogoutButton from '../components/LogoutButton'
+import UserDetailsForm from '../components/UserDetailsForm'
 
 interface UserDetails {
   name: string
@@ -88,30 +89,14 @@ const ProfilePage: React.FC = () => {
   }
 
   return (
-    <div>
+    <>
       <LogoutButton />
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={userDetails.name}
-          onChange={handleChange}
-          placeholder="Name"
-          required
-        />
-
-        <input
-          type="email"
-          name="email"
-          value={userDetails.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
-        />
-
-        <button type="submit">Save</button>
-      </form>
-    </div>
+      <UserDetailsForm
+        userDetails={userDetails}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+      />
+    </>
   )
 }
 
