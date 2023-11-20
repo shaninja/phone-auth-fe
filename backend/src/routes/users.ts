@@ -1,9 +1,9 @@
 import { Request, Response, Router } from 'express'
 import admin from 'firebase-admin'
 
-let serviceAccountKey;
+let serviceAccountKey
 if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
-    serviceAccountKey = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+  serviceAccountKey = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)
 }
 
 const router: Router = Router()

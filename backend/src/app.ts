@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenv from 'dotenv'
+dotenv.config()
 import express from 'express'
 import usersRoutes from './routes/users'
 import cors from 'cors'
