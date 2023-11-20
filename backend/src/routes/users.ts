@@ -48,7 +48,7 @@ router.post('/updateUserDetails', async (req: Request, res: Response) => {
 router.get('/getUserDetails/:phone', async (req, res) => {
   try {
     const savedUser = await db.collection('users').doc(req.params.phone).get()
-    if (savedUser) {
+    if (savedUser.exists) {
       res.status(200).json(savedUser.data())
     } else {
       res.status(404).json({ message: 'User not found' })

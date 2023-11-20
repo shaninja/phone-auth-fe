@@ -41,7 +41,11 @@ const ProfilePage: React.FC = () => {
           )
           const data = await response.json()
           if (response.ok || response.status === 404) {
-            const savedUserDetails = { ...data, phone }
+            const savedUserDetails: UserDetails = {
+              name: data?.name || '',
+              email: data?.email || '',
+              phone: phone || '',
+            }
             setUserDetails(savedUserDetails)
           } else {
             throw new Error('User not found')
