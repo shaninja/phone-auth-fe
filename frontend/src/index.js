@@ -1,5 +1,4 @@
 import firebase from 'firebase/compat/app'
-import { getAnalytics } from 'firebase/analytics'
 import 'firebase/compat/auth'
 import * as firebaseui from 'firebaseui'
 
@@ -14,19 +13,12 @@ const firebaseConfig = {
 }
 
 const app = firebase.initializeApp(firebaseConfig)
-const analytics = getAnalytics(app)
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
 const uiConfig = {
   signInOptions: [firebase.auth.PhoneAuthProvider.PROVIDER_ID],
   signInSuccessUrl: '/profilepage',
-  // callbacks: {
-  //   signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-  //     window.location.pathname = '/userdetails'
-  //     return false
-  //   },
-  // },
 }
 
 ui.start('#firebaseui-auth-container', uiConfig)

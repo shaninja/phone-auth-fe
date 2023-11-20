@@ -1,10 +1,14 @@
 import { Request, Response, Router } from 'express'
 import admin from 'firebase-admin'
-const serviceAccount = require('../service-account-key.json')
+
+let serviceAccountKey;
+if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
+    serviceAccountKey = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+}
 
 const router: Router = Router()
 
-// TODO extract this to a place that can be used for the FE and BE alike
+// TODO extract this to a place that can be used for the FE and BE alike?
 const firebaseConfig = {
   apiKey: 'AIzaSyBOYVQZkD49hYqnLEYZxGJM7QI1V0-s4rk',
   authDomain: 'phone-auth-12.firebaseapp.com',
@@ -13,13 +17,7 @@ const firebaseConfig = {
   messagingSenderId: '501699185310',
   appId: '1:501699185310:web:0b85add1f990d32217898f',
   measurementId: 'G-QJWHNVEF4B',
-  credential: admin.credential.cert(serviceAccount),
-  // TODO think about how to store the credentials. env var?
-  // credential: admin.credential.cert({
-  //   "project_id": process.env.FIREBASE_PROJECT_ID,
-  //   "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-  //   "client_email": process.env.FIREBASE_CLIENT_EMAIL,
-  // }),
+  credential: admin.credential.cert(serviceAccountKey),
 }
 
 admin.initializeApp(firebaseConfig)

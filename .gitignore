@@ -1,2 +1,4 @@
 node_modules
 backend/src/service-account-key.json
+.env
+.DS_Store
