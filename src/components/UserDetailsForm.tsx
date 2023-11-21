@@ -16,6 +16,8 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
   handleSubmit,
 }) => {
   // TODO style the form
+  /*  TODO show the current details (if exist) outside the form,
+  and let the user know they are able to change them */
   return (
     <form onSubmit={handleSubmit}>
       <input

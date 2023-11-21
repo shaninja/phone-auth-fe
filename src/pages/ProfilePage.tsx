@@ -83,11 +83,11 @@ const ProfilePage: React.FC = () => {
         },
       )
       if (response.ok) {
-        // TODO add message to the user
+        // TODO add toaster or some other success/failure indication for submission
         console.log('Response:', await response.text())
       }
     } catch (e) {
-      // TODO add message to the user
+      // TODO add toaster or some other success/failure indication for submission
       console.error('Error:', e)
     }
   }
@@ -95,6 +95,7 @@ const ProfilePage: React.FC = () => {
   return (
     <>
       {/* TODO add a loader until we get the firebase user */}
+      {/* If there's no user, redirect to 404 page or similar, to indicate that this page is only for logged-in users */}
       <LogoutButton />
       <UserDetailsForm
         userDetails={userDetails}
