@@ -4,7 +4,7 @@ import 'firebase/auth'
 import LogoutButton from '../components/LogoutButton'
 import UserDetailsForm from '../components/UserDetailsForm'
 
-const SERVER_BASE_URL = import.meta.env.VITE_APP_SERVER_BASE_URL;
+const SERVER_BASE_URL = import.meta.env.VITE_APP_SERVER_BASE_URL
 
 interface UserDetails {
   name: string
