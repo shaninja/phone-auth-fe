@@ -1,6 +1,4 @@
 import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import * as firebaseui from 'firebaseui'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBOYVQZkD49hYqnLEYZxGJM7QI1V0-s4rk',
@@ -12,13 +10,4 @@ const firebaseConfig = {
   measurementId: 'G-QJWHNVEF4B',
 }
 
-const app = firebase.initializeApp(firebaseConfig)
-
-const ui = new firebaseui.auth.AuthUI(firebase.auth())
-
-const uiConfig = {
-  signInOptions: [firebase.auth.PhoneAuthProvider.PROVIDER_ID],
-  signInSuccessUrl: '/profilepage',
-}
-
-ui.start('#firebaseui-auth-container', uiConfig)
+firebase.initializeApp(firebaseConfig)
