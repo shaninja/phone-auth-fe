@@ -4,10 +4,9 @@ import styled from 'styled-components'
 
 const StyledButton = styled.button`
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 10px 20px;
-  margin: 50px;
+  top: 20px;
+  right: 20px;
+  color: black;
 `
 
 const LogoutButton: React.FC = () => {

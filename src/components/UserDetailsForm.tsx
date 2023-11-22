@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 interface UserDetailsFormProps {
   userDetails: {
@@ -10,6 +11,15 @@ interface UserDetailsFormProps {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
+const StyledSubmitButton = styled.button`
+  color: black;
+`
+
 const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
   userDetails,
   handleChange,
@@ -19,7 +29,7 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
   /*  TODO show the current details (if exist) outside the form,
   and let the user know they are able to change them */
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <input
         type="text"
         name="name"
@@ -38,8 +48,8 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
         required
       />
 
-      <button type="submit">Save</button>
-    </form>
+      <StyledSubmitButton type="submit">Save</StyledSubmitButton>
+    </StyledForm>
   )
 }
 
