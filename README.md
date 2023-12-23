@@ -3,7 +3,7 @@
 This repository holds the client-side of the project, built with React and TypeScript, and created using Vite. This client also uses Firebase for phone number authentication and is deployed to Heroku.
 
 - [Server Repository](https://github.com/shaninja/phone-auth-be)
-- [Live Demo](https://phone-auth-client-adeda18ba45b.herokuapp.com/)
+- ~[Live Demo](https://phone-auth-client-adeda18ba45b.herokuapp.com/)~ [currently unavailable]
 
 ## Tech Stack
 
